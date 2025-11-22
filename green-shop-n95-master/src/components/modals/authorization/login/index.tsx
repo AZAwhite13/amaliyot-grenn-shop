@@ -1,13 +1,10 @@
 import { Form, Input } from "antd";
+import { signInWithGoogle } from "../../../../config/index";
 import GoogleIcon from "../../../../assets/icon/google";
 import FacebookIcon from "../../../../assets/icon/facebook";
 import type { LoginType } from "../../../../@types";
-import {
-  useLoginMutate,
-  useSignWithGoogle,
-} from "../../../../hooks/useQuery/useQueryActions";
+import { useLoginMutate } from "../../../../hooks/useQuery/useQueryActions";
 import { LoadingOutlined } from "@ant-design/icons";
-import { signInWithGoogle } from "../../../../config";
 
 const Login = () => {
   const input_style: string = "h-[40px] mt-2 !border-[#46A358]";
@@ -15,10 +12,11 @@ const Login = () => {
     "border h-[40px] border-[#EAEAEA] rounded-md flex items-center justify-center gap-3 mb-4 cursor-pointer";
 
   const { mutate, isPending } = useLoginMutate();
-  const { mutate: mutateGoogle } = useSignWithGoogle();
+
   const onAuth = (e: LoginType) => {
     mutate(e);
   };
+
   return (
     <div className="w-4/5 m-auto">
       <div className="mt-5 mb-2">
@@ -26,12 +24,7 @@ const Login = () => {
         <Form onFinish={onAuth}>
           <Form.Item
             name="email"
-            rules={[
-              {
-                required: true,
-                message: "Plase input your email",
-              },
-            ]}
+            rules={[{ required: true, message: "Plase input your email" }]}
           >
             <Input
               type="email"
@@ -41,12 +34,7 @@ const Login = () => {
           </Form.Item>
           <Form.Item
             name="password"
-            rules={[
-              {
-                required: true,
-                message: "Plase input your password",
-              },
-            ]}
+            rules={[{ required: true, message: "Plase input your password" }]}
           >
             <Input.Password
               placeholder="***********"
@@ -62,13 +50,13 @@ const Login = () => {
         </Form>
         <div className="flex items-center justify-center mt-5 mb-5 gap-4">
           <div className="w-[30%] h-[2px] bg-[#EAEAEA]"></div>
-          <p className="w-[40%]text-[#3D3D3D] text-[13px]">Or login with</p>
+          <p className="w-[40%] text-[#3D3D3D] text-[13px] text-center">
+            Or login with
+          </p>
           <div className="w-[30%] h-[2px] bg-[#EAEAEA]"></div>
         </div>
         <div
-          onClick={async () => {
-            mutateGoogle();
-          }}
+          onClick={signInWithGoogle}
           className={`${icon_style}`}
         >
           <GoogleIcon />
