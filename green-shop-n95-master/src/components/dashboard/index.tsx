@@ -3,10 +3,16 @@ import Product from "./product";
 
 const Dashboard = () => {
   return (
-    <section className="flex items-start gap-2 mt-5">
-      <Categories />
-      <Product />
-    </section>
+   <section
+  className="
+    flex flex-col md:flex-row  justify-center
+    items-start gap-4 mt-5
+  "
+>
+  <Categories />
+  <Product />
+</section>
+
   );
 };
 

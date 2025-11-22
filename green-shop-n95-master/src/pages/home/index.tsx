@@ -1,3 +1,4 @@
+import PlantCards from "../../components/cartochki";
 import Dashboard from "../../components/dashboard";
 import Header from "../../components/header";
 import Hero from "../../components/hero";
@@ -9,7 +10,8 @@ const Home = () => {
       <Header />
       <Hero />
       <Dashboard />
-      <SectionFooter/>
+      <PlantCards />
+      <SectionFooter />
     </div>
   );
 };

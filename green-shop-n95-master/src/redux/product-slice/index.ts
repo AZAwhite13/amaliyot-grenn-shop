@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { ProductType } from "../../@types";
 
-
 interface IState {
   data: ProductType[];
   coupon: number;
@@ -12,7 +11,7 @@ const initialState: IState = {
   coupon: 0,
 };
 
-export const prodcut_slice = createSlice({
+export const product_slice = createSlice({
   name: "product",
   initialState,
   reducers: {
@@ -44,48 +43,61 @@ export const prodcut_slice = createSlice({
       state.data = state.data.filter((value) => value._id !== payload);
       localStorage.setItem("shop", JSON.stringify(state.data));
     },
+
     getCouponCode(state, { payload }) {
       state.coupon = payload;
     },
+
     increment(state, { payload }) {
-  state.data = state.data.map((value) => {
-    if (value._id === payload) {
-      const newCount = Number(value.count) + 1;
+      state.data = state.data.map((value) => {
+        if (value._id === payload) {
+          const newCount = Number(value.count) + 1;
 
-      return {
-        ...value,
-        count: newCount,
-        userPrice: newCount * Number(value.price),
-      };
-    }
+          return {
+            ...value,
+            count: newCount,
+            userPrice: newCount * Number(value.price),
+          };
+        }
 
-    return value;
-  });
-  localStorage.setItem("shop", JSON.stringify(state.data))
-},
-   decrement(state, { payload }) {
-  state.data = state.data.map((value) => {
-    if (value._id === payload) {
-      const current = Number(value.count);
+        return value;
+      });
+      localStorage.setItem("shop", JSON.stringify(state.data));
+    },
 
-      
-      const newCount = current <= 1 ? 1 : current - 1;
+    decrement(state, { payload }) {
+      state.data = state.data.map((value) => {
+        if (value._id === payload) {
+          const current = Number(value.count);
+          const newCount = current <= 1 ? 1 : current - 1;
 
-      return {
-        ...value,
-        count: newCount,
-        userPrice: newCount * Number(value.price),
-      };
-    }
+          return {
+            ...value,
+            count: newCount,
+            userPrice: newCount * Number(value.price),
+          };
+        }
 
-    return value;
-  });
-  localStorage.setItem("shop", JSON.stringify(state.data))
-},
+        return value;
+      });
+      localStorage.setItem("shop", JSON.stringify(state.data));
+    },
 
+    clearCart(state) {
+      state.data = [];
+      state.coupon = 0;
+      localStorage.setItem("shop", JSON.stringify(state.data));
+    },
   },
 });
 
-export const { getData, removeData, getCouponCode , increment,decrement} = prodcut_slice.actions;
+export const {
+  getData,
+  removeData,
+  getCouponCode,
+  increment,
+  decrement,
+  clearCart,
+} = product_slice.actions;
 
-export default prodcut_slice.reducer;
+export default product_slice.reducer;

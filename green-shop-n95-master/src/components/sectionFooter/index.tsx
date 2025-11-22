@@ -5,7 +5,12 @@ import {
   FaTwitter,
   FaLinkedinIn,
 } from "react-icons/fa";
-import { SiPaypal, SiVisa, SiMastercard, SiAmericanexpress } from "react-icons/si";
+import {
+  SiPaypal,
+  SiVisa,
+  SiMastercard,
+  SiAmericanexpress,
+} from "react-icons/si";
 import { FiMapPin, FiMail, FiPhone } from "react-icons/fi";
 
 const SectionFooter: React.FC = () => {
@@ -31,10 +36,10 @@ const SectionFooter: React.FC = () => {
   ];
 
   return (
-    <footer className="bg-white border-t border-gray-200">
-     
-    <div className="flex items-center justify-baseline ">
-          <section className="py-14 border-b border-gray-200">
+    <footer className="bg-white border-t border-gray-200 w-full">
+
+      {/* -------- TOP SERVICES SECTION -------- */}
+      <section className="py-14 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
           {services.map((service, index) => (
             <div key={index} className="p-8 text-center">
@@ -55,6 +60,8 @@ const SectionFooter: React.FC = () => {
           ))}
         </div>
       </section>
+
+      {/* -------- NEWSLETTER SECTION -------- */}
       <section className="py-12 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div>
@@ -73,45 +80,42 @@ const SectionFooter: React.FC = () => {
             </div>
             <p className="text-gray-600 leading-relaxed max-w-lg">
               We usually post offers and challenges in newsletter. We’re your
-              online houseplant destination. We offer a wide range of
-              houseplants and accessories shipped directly from our
-              (green)house to yours!
+              online houseplant destination. We offer a wide range of houseplants
+              and accessories shipped directly from our (green)house to yours!
             </p>
           </div>
         </div>
       </section>
-    </div>
 
-     
+      {/* -------- CONTACT BAR -------- */}
       <div className="bg-green-50 py-6 border-t border-b border-green-100">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-gray-700">
-          <div className="flex items-center gap-2">
-              <img
-              src="https://green-shop-otabek.vercel.app/assets/logo-nyVMFuKc.svg"
-              alt=""
-            />
-           
-          </div>
+          <img
+            src="https://green-shop-otabek.vercel.app/assets/logo-nyVMFuKc.svg"
+            alt="logo"
+          />
+
           <div className="flex flex-col sm:flex-row items-center gap-6 text-base">
             <div className="flex items-center gap-2">
               <FiMapPin color="#15803d" />
               <span>70 West Buckingham Ave. Farmingdale, NY 11735</span>
             </div>
+
             <div className="flex items-center gap-2">
               <FiMail color="#15803d" />
               <span>contact@greenshop.com</span>
             </div>
+
             <div className="flex items-center gap-2">
-              <FiPhone color="#15803d"/>
+              <FiPhone color="#15803d" />
               <span>+88 01911 717 490</span>
             </div>
           </div>
         </div>
       </div>
 
-     
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10">
-       
+      {/* -------- BOTTOM LINKS & SOCIALS -------- */}
+      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
         <div>
           <h4 className="text-lg font-semibold mb-5">My Account</h4>
           <ul className="space-y-3 text-gray-600">
@@ -121,7 +125,6 @@ const SectionFooter: React.FC = () => {
           </ul>
         </div>
 
-       
         <div>
           <h4 className="text-lg font-semibold mb-5">Categories</h4>
           <ul className="space-y-3 text-gray-600">
@@ -133,7 +136,6 @@ const SectionFooter: React.FC = () => {
           </ul>
         </div>
 
-       
         <div>
           <h4 className="text-lg font-semibold mb-5">Social Media</h4>
           <div className="flex space-x-3 mb-6">
@@ -148,17 +150,16 @@ const SectionFooter: React.FC = () => {
               )
             )}
           </div>
+
           <h5 className="text-base font-medium mb-3">We accept</h5>
           <div className="flex space-x-4 text-2xl text-gray-600">
             <SiPaypal color="#15803d" />
             <SiVisa color="#15803d" />
-            <SiMastercard  color="#15803d"/>
-            <SiAmericanexpress color="#15803d"/>
+            <SiMastercard color="#15803d" />
+            <SiAmericanexpress color="#15803d" />
           </div>
         </div>
       </div>
-
-    
     </footer>
   );
 };

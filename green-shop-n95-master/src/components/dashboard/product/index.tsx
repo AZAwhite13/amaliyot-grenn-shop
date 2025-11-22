@@ -27,15 +27,24 @@ const Product = () => {
   );
   const { product_loader } = useLoader();
   return (
-    <section className="w-full">
-      <ProductHeader />
+   <section className="w-full">
+  <ProductHeader />
 
-      <div className="grid grid-cols-3 gap-4 mt-5">
-        {isLoading || isError
-          ? product_loader()
-          : data?.map((value) => <Card {...value} key={value._id} />)}
-      </div>
-    </section>
+  <div
+    className="
+      grid 
+      grid-cols-1 
+      sm:grid-cols-2 
+      lg:grid-cols-3 
+      gap-4 mt-5
+    "
+  >
+    {isLoading || isError
+      ? product_loader()
+      : data?.map((value) => <Card {...value} key={value._id} />)}
+  </div>
+</section>
+
   );
 };
 
